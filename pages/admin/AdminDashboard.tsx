@@ -153,7 +153,8 @@ export default function AdminDashboard() {
     const [scheduleToggleSuccess, setScheduleToggleSuccess] = useState(false);
 
     // Local API route (compatible with Vercel/Netlify functions)
-    const REMINDER_API_URL = '/api/send-reminder';
+    const API_BASE = import.meta.env.VITE_API_URL || '';
+    const REMINDER_API_URL = `${API_BASE}/api/send-reminder`;
 
     /**
      * Get a fresh access token — refreshes the session if it's about to expire.

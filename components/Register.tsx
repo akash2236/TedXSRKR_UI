@@ -203,7 +203,8 @@ const Register: React.FC = () => {
             setIsSuccess(true);
 
             // ── Step 2: Fire /api/register for email sending (best-effort, silent fail on static host) ──
-            fetch('https://tedxsrkr.com/api/register', {
+            const API_BASE = import.meta.env.VITE_API_URL || '';
+            fetch(`${API_BASE}/api/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

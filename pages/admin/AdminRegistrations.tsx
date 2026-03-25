@@ -291,7 +291,8 @@ function RegistrationsContent() {
                 const { data: sessionData } = await supabase.auth.getSession();
                 const token = sessionData?.session?.access_token;
 
-                const emailRes = await fetch('/api/admin/approve-registration', {
+                const API_BASE = import.meta.env.VITE_API_URL || '';
+                const emailRes = await fetch(`${API_BASE}/api/admin/approve-registration`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
